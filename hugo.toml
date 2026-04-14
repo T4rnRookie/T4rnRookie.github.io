@@ -1,4 +1,4 @@
-baseURL = 'https://t4rnrookie.github.io/New-blog/'
+baseURL = 'https://t4rnrookie.github.io/'
 languageCode = 'zh-cn'
 title = "T4rn's blog"
 theme = 'PaperMod'
