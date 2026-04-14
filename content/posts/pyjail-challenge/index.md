@@ -1,6 +1,6 @@
 ---
 title: "一道有趣的pyjail题目分析"
-date: 2021-03-05
+date: 2026-04-14
 draft: false
 tags: ["安全研究"]
 summary: "Python2/3 沙盒逃逸分析，利用 Unicode NFKC 标准化绕过字母黑名单"
