@@ -3,42 +3,43 @@
   margin-bottom: var(--gap);
 }
 
-.home-info-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
+/* 页面两侧装饰图 */
+.side-decoration {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.75;
+}
+
+.side-decoration img {
+  display: block;
   width: 100%;
-  padding: 1rem 0;
+  height: auto;
+  mix-blend-mode: multiply;
 }
 
-.home-info-side img {
-  width: 140px;
-  height: 140px;
-  object-fit: cover;
-  border-radius: 12px;
-  opacity: 0.9;
-  transition: opacity 0.3s, transform 0.3s;
+/* 暗色模式下用 screen 混合,让白色变透明 */
+.dark .side-decoration img {
+  mix-blend-mode: screen;
+  filter: invert(1) hue-rotate(180deg);
 }
 
-.home-info-side img:hover {
-  opacity: 1;
-  transform: scale(1.05);
+.side-decoration-left {
+  left: 1rem;
+  width: 200px;
 }
 
-.home-info-center {
-  text-align: center;
-  flex: 1;
-  max-width: 400px;
+.side-decoration-right {
+  right: 1rem;
+  width: 240px;
 }
 
-@media screen and (max-width: 768px) {
-  .home-info-container {
-    gap: 1rem;
-  }
-  .home-info-side img {
-    width: 80px;
-    height: 80px;
+/* 屏幕不够宽时隐藏装饰图,避免挡住内容 */
+@media screen and (max-width: 1400px) {
+  .side-decoration {
+    display: none;
   }
 }
 
