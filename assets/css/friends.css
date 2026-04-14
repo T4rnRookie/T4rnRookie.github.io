@@ -10,20 +10,13 @@
   transform: translateY(-50%);
   pointer-events: none;
   z-index: -1;
-  opacity: 0.75;
+  opacity: 0.85;
 }
 
 .side-decoration img {
   display: block;
   width: 100%;
   height: auto;
-  mix-blend-mode: multiply;
-}
-
-/* 暗色模式下用 screen 混合,让白色变透明 */
-.dark .side-decoration img {
-  mix-blend-mode: screen;
-  filter: invert(1) hue-rotate(180deg);
 }
 
 .side-decoration-left {
