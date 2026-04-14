@@ -32,6 +32,7 @@ ShowBreadCrumbs: true
 {{< friend name="TonghuaRoot's blog" url="https://www.tonghuaroot.com" desc="" >}}
 {{< friend name="Harvey's blog" url="http://harvey.plus" desc="" >}}
 {{< friend name="God1's blog" url="http://www.dingblog.cn" desc="" >}}
+{{< friend name="echoonly's blog" url="https://www.cnblogs.com/echoonly" desc="" >}}
 {{< /friends >}}
 
 ## My Friends
