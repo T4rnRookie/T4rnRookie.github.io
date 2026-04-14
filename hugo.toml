@@ -1,0 +1,54 @@
+baseURL = 'https://example.org/'
+languageCode = 'zh-cn'
+title = "T4rn's blog"
+theme = 'PaperMod'
+paginate = 10
+
+[params]
+  env = "production"
+  defaultTheme = "auto"
+  showShareButtons = false
+  showReadingTime = true
+  showPostNavLinks = true
+  showBreadCrumbs = true
+  showCodeCopyButtons = true
+  customCSS = ["css/friends.css"]
+
+  [params.homeInfoParams]
+    Title = "Welcome"
+    Content = "some ideas some memories"
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/"
+
+[menu]
+  [[menu.main]]
+    identifier = "archives"
+    name = "Archives"
+    url = "/archives/"
+    weight = 10
+  [[menu.main]]
+    identifier = "tags"
+    name = "Tags"
+    url = "/tags/"
+    weight = 20
+  [[menu.main]]
+    identifier = "search"
+    name = "Search"
+    url = "/search/"
+    weight = 30
+  [[menu.main]]
+    identifier = "friends"
+    name = "Friends"
+    url = "/friends/"
+    weight = 40
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[markup]
+  [markup.highlight]
+    style = "monokai"
+    lineNos = false
+    noClasses = false

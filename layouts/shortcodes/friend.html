@@ -1,0 +1,6 @@
+<div class="friend-card">
+  <a href="{{ .Get "url" }}" target="_blank" rel="noopener">{{ .Get "name" }}</a>
+  {{ if .Get "desc" }}
+  <div class="friend-desc">{{ .Get "desc" }}</div>
+  {{ end }}
+</div>

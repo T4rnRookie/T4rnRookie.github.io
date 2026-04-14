@@ -1,0 +1,6 @@
+{{ range site.Params.customCSS }}
+{{ $css := resources.Get . }}
+{{ if $css }}
+<style>{{ $css.Content | safeCSS }}</style>
+{{ end }}
+{{ end }}

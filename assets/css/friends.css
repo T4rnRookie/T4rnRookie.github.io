@@ -1,0 +1,41 @@
+.friends-group {
+  margin-bottom: 2rem;
+}
+
+.friends-group h2 {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.friends-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.friend-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  background: var(--entry);
+}
+
+.friend-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.friend-card a {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.friend-card .friend-desc {
+  color: var(--secondary);
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+}
