@@ -43,6 +43,11 @@ paginate = 10
     name = "Friends"
     url = "/friends/"
     weight = 40
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 50
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
