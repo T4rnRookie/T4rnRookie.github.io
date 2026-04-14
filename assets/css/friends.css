@@ -1,6 +1,45 @@
 .first-entry {
-  min-height: 200px;
+  min-height: auto;
   margin-bottom: var(--gap);
+}
+
+.home-info-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.home-info-side img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 12px;
+  opacity: 0.9;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.home-info-side img:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.home-info-center {
+  text-align: center;
+  flex: 1;
+  max-width: 400px;
+}
+
+@media screen and (max-width: 768px) {
+  .home-info-container {
+    gap: 1rem;
+  }
+  .home-info-side img {
+    width: 80px;
+    height: 80px;
+  }
 }
 
 .friends-group {

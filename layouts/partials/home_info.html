@@ -1,0 +1,23 @@
+{{- with site.Params.homeInfoParams }}
+<article class="first-entry home-info">
+  <div class="home-info-container">
+    <div class="home-info-side home-info-left">
+      <img src="/images/avatar.jpg" alt="avatar" />
+    </div>
+    <div class="home-info-center">
+      <header class="entry-header">
+        <h1>{{ .Title }}</h1>
+      </header>
+      <div class="entry-content md-content">
+        <p>{{ .Content | markdownify }}</p>
+      </div>
+      <footer class="entry-footer">
+        {{ partial "social_icons.html" site.Params.socialIcons }}
+      </footer>
+    </div>
+    <div class="home-info-side home-info-right">
+      <img src="/images/mayday.jpg" alt="mayday" />
+    </div>
+  </div>
+</article>
+{{- end }}
