@@ -6,13 +6,14 @@
     </div>
     <div class="home-info-center">
       <header class="entry-header">
-        <h1>{{ .Title }}</h1>
+        <h1>{{ .Title | markdownify }}</h1>
       </header>
       <div class="entry-content md-content">
-        <p>{{ .Content | markdownify }}</p>
+        {{ $opts := dict "display" "block" }}
+        {{ .Content | $.Page.RenderString $opts }}
       </div>
       <footer class="entry-footer">
-        {{ partial "social_icons.html" site.Params.socialIcons }}
+        {{ partial "social_icons.html" (dict "align" site.Params.homeInfoParams.AlignSocialIconsTo) }}
       </footer>
     </div>
     <div class="home-info-side home-info-right">
@@ -20,4 +21,4 @@
     </div>
   </div>
 </article>
-{{- end }}
+{{- end -}}
