@@ -21,6 +21,7 @@ ShowBreadCrumbs: true
 {{< friend name="雷保送" url="https://blog.ruozhi.xyz/" desc="华中赛区第一awd 喜欢虐人" >}}
 {{< friend name="sp4c1ous师傅" url="http://www.whrizyl819.xyz/" desc="圣地亚哥皮球的king" >}}
 {{< friend name="Imagin" url="https://imagin.vip" desc="小红花哥哥" >}}
+{{< friend name="1cePeak哥哥" url="https://1cepeak.cn/" desc="西安之光" >}}
 {{< friend name="小陈's blog" url="http://www.hackxc.cc/" desc="" >}}
 {{< friend name="End_donkey's blog" url="https://www.cnblogs.com/donkey2603089141/" desc="" >}}
 {{< friend name="Blog of Code" url="https://www.cztcode.com/" desc="" >}}
