@@ -3,11 +3,19 @@
   if (!content || document.querySelector('.frontend-toc')) return;
 
   const headings = Array.from(content.querySelectorAll('h1, h2, h3, h4, h5, h6'))
-    .filter((heading) => heading.textContent.trim().length > 0);
-  if (headings.length < 2) return;
+    .filter((heading) => getHeadingText(heading).length > 0);
+  if (headings.length < 1) return;
 
   const slugCount = new Map();
-  const slugify = (text) => {
+  const links = new Map();
+
+  function getHeadingText(heading) {
+    const clone = heading.cloneNode(true);
+    clone.querySelectorAll('.anchor, [aria-hidden="true"]').forEach((node) => node.remove());
+    return clone.textContent.trim();
+  }
+
+  function slugify(text) {
     const base = text.trim()
       .toLowerCase()
       .replace(/[`~!@#$%^&*()+=[\]{}|;:'",.<>/?，。！？、；：“”‘’（）【】《》]/g, '')
@@ -17,44 +25,60 @@
     const count = slugCount.get(base) || 0;
     slugCount.set(base, count + 1);
     return count ? `${base}-${count}` : base;
-  };
+  }
 
   headings.forEach((heading) => {
-    if (!heading.id) heading.id = slugify(heading.textContent);
+    if (!heading.id) heading.id = slugify(getHeadingText(heading));
   });
 
   const toc = document.createElement('nav');
   toc.className = 'frontend-toc';
   toc.setAttribute('aria-label', '文章目录');
-  toc.innerHTML = '<div class="frontend-toc__title">目录</div><ol class="frontend-toc__list"></ol>';
+  toc.innerHTML = '<div class="frontend-toc__title">目录</div>';
 
-  const list = toc.querySelector('.frontend-toc__list');
-  const links = new Map();
+  const rootList = document.createElement('ol');
+  rootList.className = 'frontend-toc__list frontend-toc__list--root';
+  toc.appendChild(rootList);
+
+  // Build a real tree from h1~h6. The first heading can be any level,
+  // and skipped levels are attached to the nearest existing parent.
+  const stack = [{ level: 0, list: rootList }];
 
   headings.forEach((heading) => {
     const level = Number(heading.tagName.slice(1));
-    const text = heading.textContent.replace(/#/g, '').trim();
+    const text = getHeadingText(heading);
+
+    while (stack.length > 1 && stack[stack.length - 1].level >= level) {
+      stack.pop();
+    }
+
     const item = document.createElement('li');
-    item.className = 'frontend-toc__item';
+    item.className = `frontend-toc__item frontend-toc__item--level-${level}`;
 
     const link = document.createElement('a');
-    link.className = `frontend-toc__link frontend-toc__level-${level}`;
+    link.className = `frontend-toc__link frontend-toc__link--level-${level}`;
     link.href = `#${encodeURIComponent(heading.id)}`;
     link.textContent = text;
     link.title = text;
 
+    const childList = document.createElement('ol');
+    childList.className = 'frontend-toc__list frontend-toc__list--child';
+
     item.appendChild(link);
-    list.appendChild(item);
+    item.appendChild(childList);
+    stack[stack.length - 1].list.appendChild(item);
     links.set(heading.id, link);
+
+    stack.push({ level, list: childList });
   });
 
   document.body.appendChild(toc);
 
-  const setActive = (id) => {
+  function setActive(id) {
     links.forEach((link) => {
       link.classList.toggle('is-active', link.getAttribute('href') === `#${encodeURIComponent(id)}`);
     });
-  };
+  }
 
   if ('IntersectionObserver' in window) {
     const visible = new Map();
