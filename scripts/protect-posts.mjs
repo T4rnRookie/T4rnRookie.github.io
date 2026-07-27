@@ -104,7 +104,7 @@ function extractPostContent(html, htmlPath) {
 }
 
 function protectedBox(post, payload) {
-  return `<div class="protected-post" data-password="${htmlEscape(post.password)}">
+  return `<div class="protected-post">
   <h2 class="protected-post__title">这篇文章已加密</h2>
   <p class="protected-post__desc">输入密码后在浏览器本地解密正文。</p>
   <p class="protected-post__hint">页面密码：<code class="protected-post__password">${htmlEscape(post.hint)}</code></p>

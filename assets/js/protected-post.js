@@ -44,8 +44,6 @@
     if (!payloadEl || !form || !input || !content) return;
 
     const payload = JSON.parse(payloadEl.textContent);
-    const password = box.dataset.password || '';
-    if (password) input.value = password;
 
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
