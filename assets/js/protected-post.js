@@ -47,20 +47,20 @@
 
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
-      message.textContent = '解密中...';
+      message.textContent = 'Decrypting...';
       try {
         const html = await decryptPost(payload, input.value);
         content.innerHTML = html;
         if (window.buildFrontendToc) window.buildFrontendToc();
       } catch (error) {
-        message.textContent = '密码不对，或者密文损坏。';
+        message.textContent = 'Wrong password.';
       }
     });
   }
 
   if (!window.crypto || !window.crypto.subtle) {
     document.querySelectorAll('.protected-post__message').forEach((el) => {
-      el.textContent = '当前浏览器不支持 WebCrypto，无法解密。';
+      el.textContent = 'WebCrypto is not supported by this browser.';
     });
     return;
   }

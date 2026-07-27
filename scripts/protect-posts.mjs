@@ -105,12 +105,11 @@ function extractPostContent(html, htmlPath) {
 
 function protectedBox(post, payload) {
   return `<div class="protected-post">
-  <h2 class="protected-post__title">这篇文章已加密</h2>
-  <p class="protected-post__desc">输入密码后在浏览器本地解密正文。</p>
-  <p class="protected-post__hint">页面密码：<code class="protected-post__password">${htmlEscape(post.hint)}</code></p>
+  <h2 class="protected-post__title">This article needs password</h2>
+  <p class="protected-post__hint">Password: <code class="protected-post__password">${htmlEscape(post.hint)}</code></p>
   <form class="protected-post__form">
-    <input class="protected-post__input" type="password" autocomplete="current-password" placeholder="输入密码" aria-label="文章密码">
-    <button class="protected-post__button" type="submit">解锁</button>
+    <input class="protected-post__input" type="password" autocomplete="current-password" placeholder="Password" aria-label="Article password">
+    <button class="protected-post__button" type="submit">Unlock</button>
   </form>
   <p class="protected-post__message" aria-live="polite"></p>
   <script type="application/json" class="protected-post__payload">${JSON.stringify(payload)}</script>
