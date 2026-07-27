@@ -6,3 +6,10 @@
   <img src="/images/mayday.png" alt="" />
 </div>
 {{ end }}
+
+{{- if and .IsPage (not .IsHome) }}
+{{- with resources.Get "js/frontend-toc.js" }}
+{{- $tocJS := . | minify | fingerprint }}
+<script src="{{ $tocJS.RelPermalink }}" integrity="{{ $tocJS.Data.Integrity }}"></script>
+{{- end }}
+{{- end }}
