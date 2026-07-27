@@ -8,6 +8,10 @@
 {{ end }}
 
 {{- if and .IsPage (not .IsHome) }}
+{{- with resources.Get "js/protected-post.js" }}
+{{- $protectedJS := . | minify | fingerprint }}
+<script src="{{ $protectedJS.RelPermalink }}" integrity="{{ $protectedJS.Data.Integrity }}"></script>
+{{- end }}
 {{- with resources.Get "js/frontend-toc.js" }}
 {{- $tocJS := . | minify | fingerprint }}
 <script src="{{ $tocJS.RelPermalink }}" integrity="{{ $tocJS.Data.Integrity }}"></script>

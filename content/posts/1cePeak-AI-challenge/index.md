@@ -5,6 +5,10 @@ draft: false
 tags: ["CTF","AI安全"]
 summary: "1cePeak是最牛逼的"
 
+protected: true
+protected_password: "1cePeaknb"
+protected_hint: "1cePeaknb"
+protected_summary: "这篇文章已加密，页面密码：1cePeaknb"
 ---
 
 > tips: 想念坊上的烧烤了，希望我哥能请我吃

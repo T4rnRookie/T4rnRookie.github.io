@@ -45,6 +45,7 @@ jobs:
           HUGO_ENVIRONMENT: production
         run: |
           hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
+          node scripts/protect-posts.mjs
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
