@@ -1,5 +1,5 @@
 ---
-title: "Fastjson 1.2.83漏洞分析"
+title: "Fastjson 1.2.83 &&2 漏洞分析"
 date: 2026-07-27
 draft: false
 tags: ["Java安全", "Fastjson", "漏洞分析"]
@@ -238,8 +238,24 @@ jar:file:/proc/self/fd/32!/fd32/Foo.class
 ![Pasted image 20260727144647](Pasted%20image%2020260727144647.png)
 RCE成功了
 
-### part3.后记&&未完待续
+### part3 fastjson2 🤔?
+刚写完发出来发现爆出来2了？
+https://github.com/alibaba/fastjson2/pull/7695/changes
+但长亭写了描述
 
+fastjson2 默认不开启 autotypesupport
+![Pasted image 20260727162321](Pasted%20image%2020260727162321.png)
+
+所以只能走这里
+![Pasted image 20260727163524](Pasted%20image%2020260727163524.png)
+问问ai他说是可以爆破的
+![Pasted image 20260727163715](Pasted%20image%2020260727163715.png)
+完全ai写一个 就行了
+比较有意思的是fastjson2 里 **TypeUtils.loadClass**
+![Pasted image 20260727163913](Pasted%20image%2020260727163913.png)
+
+所以在fastjson2里 即使tomcat也一发就入魂了
+### part4 后记&&未完待续
 还可以不用fd的思路
 想写再说吧
 第一次写这种基础调试+AI+思考的文章
